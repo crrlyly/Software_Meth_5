@@ -6,22 +6,19 @@ package com.example.software_meth_5.rudonuts;
  * @author Carly Chick
  */
 public enum DonutType {
-    YEAST(1.99, "YeastDonut.png"),
-    CAKE(2.19, "CakeDonut.png"),
-    DONUTHOLE(0.39, "DonutHole.png"),
-    SEASONAL(2.49, "SeasonalDonut.png");
+    YEAST(1.99),
+    CAKE(2.19),
+    DONUTHOLE(0.39),
+    SEASONAL(2.49);
 
     private final double price;
-    private final String img;
 
     /**
      * Constructor of a donut type with the price and image of the donut
      * @param price price
-     * @param img donut image
      */
-    DonutType(double price, String img) {
+    DonutType(double price) {
         this.price = price;
-        this.img = img;
     }
 
     /**
@@ -32,11 +29,4 @@ public enum DonutType {
         return price;
     }
 
-    /**
-     * Get the image of the donut type
-     * @return image path as string
-     */
-    public String getImg() {
-        return img;
-    }
 }
