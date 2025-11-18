@@ -19,14 +19,15 @@
             android:id="@+id/cafePic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="cafe"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/cafe" />
+            app:srcCompat="@drawable/cutecafe" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha=".5"
-            android:background="#000000">
+            android:background="#2F2222">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -35,6 +36,7 @@
             android:layout_width="355dp"
             android:layout_height="172dp"
             android:layout_gravity="bottom"
+            android:contentDescription="cafe"
             android:paddingLeft="30dp"
             android:text="Introducing RU Cafe"
             android:textColor="#FFFFFF"
@@ -50,7 +52,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/orderInstruction"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginTop="10dp"
@@ -76,11 +78,12 @@
                 app:srcCompat="@drawable/donutpic" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/overlay1"
                 android:layout_width="356dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:alpha=".3"
-                android:background="#000000">
+                android:background="#2F2222">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,7 +105,7 @@
             android:layout_marginBottom="20dp">
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/coffeePic"
                 android:layout_width="357dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -110,11 +113,12 @@
                 app:srcCompat="@drawable/coffeepic" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/overlay3"
                 android:layout_width="356dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:alpha=".3"
-                android:background="#000000">
+                android:background="#2F2222">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -124,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Coffee"
-                android:textColor="#000000"
+                android:textColor="#262626"
                 android:textSize="48sp"
                 android:textStyle="bold" />
 
@@ -133,10 +137,10 @@
         <FrameLayout
             android:id="@+id/sandwichBanner"
             android:layout_width="match_parent"
-            android:layout_height="121dp" >
+            android:layout_height="121dp">
 
             <ImageView
-                android:id="@+id/imageView14"
+                android:id="@+id/sandwichPic"
                 android:layout_width="357dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
