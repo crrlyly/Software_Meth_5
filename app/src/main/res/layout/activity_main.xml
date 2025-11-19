@@ -58,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:paddingLeft="10dp"
-            android:text="Order Options"
+            android:text="See Our Menu!"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -163,6 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:background="#FFFFFF"
                 android:contentDescription="Menu"
                 android:padding="20dp"
                 app:srcCompat="@drawable/menu" />

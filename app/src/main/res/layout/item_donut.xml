@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- OUTER layout: fills the row and centers the inner card -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="25dp"
     android:gravity="center_horizontal"
     android:paddingTop="8dp"
     android:paddingBottom="8dp">
@@ -11,7 +12,7 @@
     <!-- INNER layout: actual donut card, fixed width -->
     <LinearLayout
         android:id="@+id/donutOption"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -25,21 +26,70 @@
             android:id="@+id/donutName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center|center_vertical"
             android:text="Donut"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/donutOptionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#644D4E"
-            android:gravity="center"
-            android:text="Choose" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/donutOptionBtn"
+                android:layout_width="112dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_horizontal"
+                android:background="#644D4E"
+                android:foregroundGravity="center_vertical"
+                android:gravity="center|center_vertical"
+                android:text="Choose" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addBtn"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="+"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/quantityText"
+                    android:layout_width="69dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/removeBtn"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="#FFFFFF"
+                    android:textColorLink="#FFFFFF"
+                    android:textSize="20sp"
+                    app:opticalCenterEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
