@@ -12,33 +12,36 @@ import java.util.stream.Collectors;
  * @author Carly Chick
  */
 public enum Flavor {
-    GLAZED(DonutType.YEAST, "glazedyeast"),
-    CHOCOLATE(DonutType.YEAST, "chocoyeast"),
-    STRAWBERRY(DonutType.YEAST, "strawberryyeast"),
-    VANILLA(DonutType.YEAST, "vanillayeast"),
-    MAPLE(DonutType.YEAST, "mapleyeast"),
-    CINNAMON_SUGAR(DonutType.YEAST, "cinasugaryeast"),
+    GLAZED(DonutType.YEAST, "Glazed Yeast Donut", "glazedyeast"),
+    CHOCOLATE(DonutType.YEAST, "Chocolate Yeast Donut", "chocoyeast"),
+    STRAWBERRY(DonutType.YEAST, "Strawberry Yeast Donut", "strawberryyeast"),
+    VANILLA(DonutType.YEAST, "Vanilla Yeast Donut", "vanillayeast"),
+    MAPLE(DonutType.YEAST, "Maple Yeast Donut", "mapleyeast"),
+    CINNAMON_SUGAR(DonutType.YEAST, "Cinnamon Sugar Yeast Donut", "cinasugaryeast"),
 
-    PLAIN(DonutType.CAKE, "plaincake"),
-    MARBLE(DonutType.CAKE, "marblecake"),
-    BLUEBERRY(DonutType.CAKE, "blueberrycake"),
+    PLAIN(DonutType.CAKE, "Plain Cake Donut", "plaincake"),
+    MARBLE(DonutType.CAKE, "Marble Cake Donut", "marblecake"),
+    BLUEBERRY(DonutType.CAKE, "Blueberry Cake Donut", "blueberrycake"),
 
-    POWDERED(DonutType.DONUTHOLE, "powderehole"),
-    SEMI_GLAZED(DonutType.DONUTHOLE, "semiglazehole"),
-    CINNAMON(DonutType.DONUTHOLE, "cinhole"),
+    POWDERED(DonutType.DONUTHOLE, "Powdered Donut Hole", "powderhole"),
+    SEMI_GLAZED(DonutType.DONUTHOLE, "Semi Glazed Donut Hole", "semiglazehole"),
+    CINNAMON(DonutType.DONUTHOLE, "Cinnamon Donut Hole", "cinhole"),
 
-    PUMPKIN_SPICE(DonutType.SEASONAL, "pumpkinspice"),
-    SPOOKY(DonutType.SEASONAL, "spooky");
+    PUMPKIN_SPICE(DonutType.SEASONAL, "Pumpkin Spice Donut", "pumpkinspice"),
+    SPOOKY(DonutType.SEASONAL, "Spooky Donut", "spooky");
 
     private final DonutType type;
+
+    private final String name;
     private final String img;
 
     /**
      * Constructor for a donut flavor with the donut type
      * @param type donut type
      */
-    Flavor(DonutType type, String img) {
+    Flavor(DonutType type, String name, String img) {
         this.type = type;
+        this.name = name;
         this.img = img;
     }
 
@@ -51,6 +54,14 @@ public enum Flavor {
         return Arrays.stream(values())
                 .filter(f -> f.type == type)
                 .collect(Collectors.toList());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getImg() {
+        return img;
     }
 
     /**

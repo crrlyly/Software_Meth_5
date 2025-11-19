@@ -69,23 +69,13 @@
             android:layout_height="121dp"
             android:layout_marginBottom="20dp">
 
-            <ImageView
-                android:id="@+id/donutPic"
-                android:layout_width="356dp"
+            <ImageButton
+                android:id="@+id/donutBtn"
+                android:layout_width="357dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/donutpic" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/overlay1"
-                android:layout_width="356dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:alpha=".3"
-                android:background="#2F2222">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:contentDescription="donut button"
+                app:srcCompat="@drawable/mapleyeast" />
 
             <TextView
                 android:id="@+id/donut"
@@ -93,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Donuts"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="48sp"
                 android:textStyle="bold" />
         </FrameLayout>
@@ -104,23 +94,13 @@
             android:layout_height="121dp"
             android:layout_marginBottom="20dp">
 
-            <ImageView
-                android:id="@+id/coffeePic"
+            <ImageButton
+                android:id="@+id/coffeeBtn"
                 android:layout_width="357dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
+                android:contentDescription="coffee button"
                 app:srcCompat="@drawable/coffeepic" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/overlay3"
-                android:layout_width="356dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:alpha=".3"
-                android:background="#2F2222">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/coffee"
@@ -139,22 +119,13 @@
             android:layout_width="match_parent"
             android:layout_height="121dp">
 
-            <ImageView
-                android:id="@+id/sandwichPic"
+            <ImageButton
+                android:id="@+id/sandwichBtn"
                 android:layout_width="357dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
+                android:contentDescription="sandwich button"
                 app:srcCompat="@drawable/sandwichpic" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="356dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:alpha=".3"
-                android:background="#000000">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/sandwich"
@@ -162,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Sandwich"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="48sp"
                 android:textStyle="bold" />
 
@@ -185,7 +156,7 @@
             android:elevation="10dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/menuIcon"
