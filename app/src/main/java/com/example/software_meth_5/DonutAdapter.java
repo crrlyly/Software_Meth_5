@@ -54,11 +54,13 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
     static class DonutViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView nameText;
+        TextView quantityText;
 
         DonutViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.donutImage);
             nameText = itemView.findViewById(R.id.donutName);
+            quantityText = itemView.findViewById(R.id.quantityText);
         }
     }
 }
