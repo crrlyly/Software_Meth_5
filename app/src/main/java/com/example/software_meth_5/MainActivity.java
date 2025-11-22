@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         sandwichBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DonutActivity.class);
+            Intent intent = new Intent(MainActivity.this, SandwichActivity.class);
             startActivity(intent);
         });
 
