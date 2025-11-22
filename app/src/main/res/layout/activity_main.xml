@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,183 +9,189 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/titleBanner"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#500404">
-
-        <ImageView
-            android:id="@+id/cafePic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="cafe"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/cutecafe" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha=".5"
-            android:background="#2F2222">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="355dp"
-            android:layout_height="172dp"
-            android:layout_gravity="bottom"
-            android:contentDescription="cafe"
-            android:paddingLeft="30dp"
-            android:text="Introducing RU Cafe"
-            android:textColor="#FFFFFF"
-            android:textSize="55sp"
-            android:textStyle="normal" />
-    </FrameLayout>
-
     <LinearLayout
-        android:id="@+id/foodChoices"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/orderInstruction"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
-            android:text="See Our Menu!"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <FrameLayout
-            android:id="@+id/donutBanner"
+            android:id="@+id/titleBanner"
             android:layout_width="match_parent"
-            android:layout_height="121dp"
-            android:layout_marginBottom="20dp">
+            android:layout_height="300dp"
+            android:background="#500404">
 
-            <ImageButton
-                android:id="@+id/donutBtn"
-                android:layout_width="357dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="donut button"
-                app:srcCompat="@drawable/mapleyeast" />
-
-            <TextView
-                android:id="@+id/donut"
+            <ImageView
+                android:id="@+id/cafePic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Donuts"
-                android:textColor="#000000"
-                android:textSize="48sp"
-                android:textStyle="bold" />
-        </FrameLayout>
+                android:contentDescription="cafe"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/cutecafe" />
 
-        <FrameLayout
-            android:id="@+id/coffeeBanner"
-            android:layout_width="match_parent"
-            android:layout_height="121dp"
-            android:layout_marginBottom="20dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha=".5"
+                android:background="#2F2222">
 
-            <ImageButton
-                android:id="@+id/coffeeBtn"
-                android:layout_width="357dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="coffee button"
-                app:srcCompat="@drawable/coffeepic" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/coffee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Coffee"
-                android:textColor="#262626"
-                android:textSize="48sp"
-                android:textStyle="bold" />
-
+                android:id="@+id/titleText"
+                android:layout_width="355dp"
+                android:layout_height="172dp"
+                android:layout_gravity="bottom"
+                android:contentDescription="cafe"
+                android:paddingLeft="30dp"
+                android:text="Introducing RU Cafe"
+                android:textColor="#FFFFFF"
+                android:textSize="55sp"
+                android:textStyle="normal" />
         </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/sandwichBanner"
-            android:layout_width="match_parent"
-            android:layout_height="121dp">
-
-            <ImageButton
-                android:id="@+id/sandwichBtn"
-                android:layout_width="357dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="sandwich button"
-                app:srcCompat="@drawable/sandwichpic" />
-
-            <TextView
-                android:id="@+id/sandwich"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Sandwich"
-                android:textColor="#000000"
-                android:textSize="48sp"
-                android:textStyle="bold" />
-
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#FFFFFF"
-        android:visibility="visible"
-        app:elevation="15dp">
 
         <LinearLayout
+            android:id="@+id/foodChoices"
+            android:layout_width="match_parent"
+            android:layout_height="465dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/orderInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
+                android:text="See Our Menu!"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/donutBanner"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageButton
+                    android:id="@+id/donutBtn"
+                    android:layout_width="357dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="donut button"
+                    app:srcCompat="@drawable/mapleyeast" />
+
+                <TextView
+                    android:id="@+id/donut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Donuts"
+                    android:textColor="#000000"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/coffeeBanner"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageButton
+                    android:id="@+id/coffeeBtn"
+                    android:layout_width="357dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="coffee button"
+                    app:srcCompat="@drawable/coffeepic" />
+
+                <TextView
+                    android:id="@+id/coffee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Coffee"
+                    android:textColor="#262626"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/sandwichBanner"
+                android:layout_width="match_parent"
+                android:layout_height="121dp">
+
+                <ImageButton
+                    android:id="@+id/sandwichBtn"
+                    android:layout_width="357dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="sandwich button"
+                    app:srcCompat="@drawable/sandwichpic" />
+
+                <TextView
+                    android:id="@+id/sandwich"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Sandwich"
+                    android:textColor="#000000"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#FFFFFF"
-            android:elevation="10dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:visibility="visible"
+            app:elevation="15dp">
 
-            <ImageView
-                android:id="@+id/menuIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
                 android:background="#FFFFFF"
-                android:contentDescription="Menu"
-                android:padding="20dp"
-                app:srcCompat="@drawable/menu" />
+                android:elevation="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-            <ImageView
-                android:id="@+id/badIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="Bag"
-                android:padding="20dp"
-                app:srcCompat="@drawable/cart" />
+                <ImageView
+                    android:id="@+id/menuIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="Menu"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/menu" />
 
-            <ImageView
-                android:id="@+id/orderIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:contentDescription="Orders"
-                android:padding="20dp"
-                app:srcCompat="@drawable/order" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/badIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Bag"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/cart" />
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+                <ImageView
+                    android:id="@+id/orderIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:contentDescription="Orders"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/order" />
+            </LinearLayout>
 
-</LinearLayout>
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </LinearLayout>
+
+</ScrollView>

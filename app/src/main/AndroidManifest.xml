@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".DonutActivity" />
         <activity android:name=".CoffeeActivity" />
+        <activity android:name=".SandwichActivity" />
     </application>
 
 </manifest>
