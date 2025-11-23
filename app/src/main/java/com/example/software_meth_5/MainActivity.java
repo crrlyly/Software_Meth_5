@@ -44,14 +44,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void botNavListener(){
-        ImageView menuIcon = findViewById(R.id.menuIcon);
         ImageView bagIcon = findViewById(R.id.bagIcon);
         ImageView orderIcon = findViewById(R.id.orderIcon);
-
-        menuIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
 
         bagIcon.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, BagActivity.class);
