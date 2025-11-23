@@ -24,6 +24,22 @@ public class CoffeeActivity extends AppCompatActivity {
 
         backBtnHandler();
 
+        initSpinner();
+
+
+
+
+    }
+
+    private void backBtnHandler(){
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(CoffeeActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void initSpinner(){
         Spinner spinner = findViewById(R.id.spinnerCoffee);
 
         CupSize[] sizes = CupSize.values();
@@ -46,14 +62,6 @@ public class CoffeeActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
-        });
-    }
-
-    private void backBtnHandler(){
-        ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(CoffeeActivity.this, MainActivity.class);
-            startActivity(intent);
         });
     }
 }
