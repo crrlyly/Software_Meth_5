@@ -174,7 +174,7 @@
                     app:srcCompat="@drawable/menu" />
 
                 <ImageView
-                    android:id="@+id/badIcon"
+                    android:id="@+id/bagIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="Bag"

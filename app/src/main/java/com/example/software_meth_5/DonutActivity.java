@@ -19,12 +19,7 @@ public class DonutActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_donut);
 
-        ImageButton backBtn = findViewById(R.id.backBtn);
-
-        backBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(DonutActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
+        backBtnHandler();
 
         RecyclerView recyclerView = findViewById(R.id.donutRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -32,5 +27,13 @@ public class DonutActivity extends AppCompatActivity {
         DonutAdapter adapter = new DonutAdapter(this, Flavor.values());
         recyclerView.setAdapter(adapter);
 
+    }
+
+    private void backBtnHandler(){
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DonutActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,5 +40,27 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        botNavListener();
+    }
+
+    private void botNavListener(){
+        ImageView menuIcon = findViewById(R.id.menuIcon);
+        ImageView bagIcon = findViewById(R.id.bagIcon);
+        ImageView orderIcon = findViewById(R.id.orderIcon);
+
+        menuIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        bagIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, BagActivity.class);
+            startActivity(intent);
+        });
+
+        orderIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+            startActivity(intent);
+        });
     }
 }

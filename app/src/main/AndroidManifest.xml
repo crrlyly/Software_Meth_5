@@ -23,6 +23,8 @@
         <activity android:name=".DonutActivity" />
         <activity android:name=".CoffeeActivity" />
         <activity android:name=".SandwichActivity" />
+        <activity android:name=".BagActivity" />
+        <activity android:name=".OrderActivity" />
     </application>
 
 </manifest>
