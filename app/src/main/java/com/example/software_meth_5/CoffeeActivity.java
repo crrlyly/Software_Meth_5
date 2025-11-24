@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -180,7 +179,7 @@ public class CoffeeActivity extends AppCompatActivity {
         TextView quantityText = findViewById(R.id.quantityCoffee);
         int quantity = Integer.parseInt(quantityText.getText().toString().trim());
 
-        RadioButton[] radioGrp = {
+        CheckBox[] radioGrp = {
                 findViewById(R.id.creamBtn),
                 findViewById(R.id.vanillaBtn),
                 findViewById(R.id.milkBtn),
