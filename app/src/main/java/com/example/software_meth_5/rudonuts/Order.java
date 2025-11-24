@@ -19,7 +19,7 @@ public class Order {
      */
     public Order(int orderNumber, List<MenuItem> listOfItems) {
         this.orderNumber = orderNumber;
-        this.listOfItems = new ArrayList<>();
+        this.listOfItems = new ArrayList<>(listOfItems);
     }
 
     /**

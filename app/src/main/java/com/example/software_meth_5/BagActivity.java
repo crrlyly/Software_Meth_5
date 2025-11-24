@@ -21,6 +21,7 @@ import com.example.software_meth_5.rudonuts.Order;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,7 +29,7 @@ public class BagActivity extends AppCompatActivity {
 
     private int selectedPosition = -1; // stored position
     private CustomAdapter adapter;
-    private List<MenuItem> orderList;
+    private List<MenuItem> itemList;
     private final DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
@@ -43,11 +44,11 @@ public class BagActivity extends AppCompatActivity {
         Button deleteBtn = findViewById(R.id.deleteItem);
         Button placeBtn = findViewById(R.id.placeBtn);
 
-        orderList = ShareResource.getInstance().getCurrentOrder();
+        itemList = ShareResource.getInstance().getCurrentOrder();
 
         adapter = new CustomAdapter(
                 this,
-                orderList
+                itemList
         );
         listView.setAdapter(adapter);
 
@@ -97,7 +98,7 @@ public class BagActivity extends AppCompatActivity {
 
     private void deleteSelectedItem() {
         if (selectedPosition != -1) {
-            orderList.remove(selectedPosition);
+            itemList.remove(selectedPosition);
             adapter.notifyDataSetChanged();
             selectedPosition = -1;
             new AlertDialog.Builder(BagActivity.this)
@@ -113,8 +114,8 @@ public class BagActivity extends AppCompatActivity {
         }
     }
 
-    private void placeOrder(){
-        if(orderList.isEmpty()){
+    private void placeOrder() {
+        if (itemList.isEmpty()) {
             new AlertDialog.Builder(BagActivity.this)
                     .setTitle("List Status")
                     .setMessage("No selected items in bag. Please add some items and try again.")
@@ -125,9 +126,15 @@ public class BagActivity extends AppCompatActivity {
         ShareResource.getInstance().setOrderNumber(
                 ShareResource.getInstance().getOrderNumber() + 1
         );
-        Order order = new Order(ShareResource.getInstance().getOrderNumber(), orderList);
+
+        Order order = new Order(
+                ShareResource.getInstance().getOrderNumber(),
+                new ArrayList<>(ShareResource.getInstance().getCurrentOrder())    // COPY!
+        );
+
         ShareResource.getInstance().getAllOrders().add(order);
         ShareResource.getInstance().getCurrentOrder().clear();
+
         Toast.makeText(getApplicationContext(),
                 "Successfully placed your order.",
                 Toast.LENGTH_SHORT).show();
