@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -41,7 +41,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/priceText"
                     android:layout_width="121dp"
                     android:layout_height="72dp"
                     android:layout_weight="1"
@@ -131,6 +131,7 @@
                             android:layout_width="55dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:gravity="center"
                             android:padding="2dp"
@@ -138,14 +139,15 @@
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/quantityText"
-                            android:layout_width="69dp"
+                            android:id="@+id/quantityCoffee"
+                            android:layout_width="62dp"
                             android:layout_height="50dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="5dp"
-                            android:layout_weight="0"
                             android:gravity="center"
-                            android:text="TextView" />
+                            android:text="1"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/removeBtn"
@@ -161,7 +163,7 @@
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/addToOrderBtn"
                         android:layout_width="161dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -169,35 +171,42 @@
                         android:text="Add to Order" />
                 </LinearLayout>
 
-                <RadioGroup
+                <LinearLayout
                     android:layout_width="210dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/radioButton6"
+                    <CheckBox
+                        android:id="@+id/creamBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tomato" />
+                        android:text="Whipped Cream" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton4"
+                    <CheckBox
+                        android:id="@+id/vanillaBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lettuce" />
+                        android:text="Vanilla" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton3"
+                    <CheckBox
+                        android:id="@+id/milkBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cheese" />
+                        android:text="Milk" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton2"
+                    <CheckBox
+                        android:id="@+id/mochaBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Onion" />
+                        android:text="Mocha" />
 
-                </RadioGroup>
+                    <CheckBox
+                        android:id="@+id/caramelBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Caramel" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>

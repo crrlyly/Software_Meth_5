@@ -67,7 +67,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/quantityText"
+                    android:id="@+id/quantitySandwichText"
                     android:layout_width="69dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"

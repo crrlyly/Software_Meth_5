@@ -6,16 +6,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.software_meth_5.rudonuts.AddIns;
+import com.example.software_meth_5.rudonuts.Coffee;
 import com.example.software_meth_5.rudonuts.CupSize;
+import com.example.software_meth_5.rudonuts.MenuItem;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class CoffeeActivity extends AppCompatActivity {
+
+    private final DecimalFormat df = new DecimalFormat("0.00");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +40,13 @@ public class CoffeeActivity extends AppCompatActivity {
 
         initSpinner();
 
+        addOrder();
 
+        addToQuantity();
 
+        removeFromQuantity();
 
+        displayPrice();
     }
 
     private void backBtnHandler(){
@@ -56,13 +74,137 @@ public class CoffeeActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                CupSize selected = (CupSize) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "Selected: " + selected, Toast.LENGTH_SHORT).show();
+                displayPrice();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+    }
+
+    private void addToQuantity(){
+        Button addBtn = findViewById(R.id.addBtn);
+        addBtn.setOnClickListener(view -> {
+            TextView quantityText = findViewById(R.id.quantityCoffee);
+            int quantity = Integer.parseInt(quantityText.getText().toString().trim());
+            int newQuantity = quantity + 1;
+            quantityText.setText(String.valueOf(newQuantity));
+
+            displayPrice();
+        });
+    }
+
+    private void removeFromQuantity(){
+        Button removeBtn = findViewById(R.id.removeBtn);
+        removeBtn.setOnClickListener(view -> {
+            TextView quantityText = findViewById(R.id.quantityCoffee);
+            int quantity = Integer.parseInt(quantityText.getText().toString().trim());
+            if(quantity <= 1){
+                return;
+            }
+            int newQuantity = quantity - 1;
+            quantityText.setText(String.valueOf(newQuantity));
+
+            displayPrice();
+        });
+    }
+
+    //shorten this later TODO
+    private void addOrder() {
+        Button addToOrderBtn = findViewById(R.id.addToOrderBtn);
+        CheckBox[] checkGrp = {
+                findViewById(R.id.creamBtn),
+                findViewById(R.id.vanillaBtn),
+                findViewById(R.id.milkBtn),
+                findViewById(R.id.mochaBtn),
+                findViewById(R.id.caramelBtn)
+        };
+
+        AddIns[] addInsValues = {
+                AddIns.WHIPPEDCREAM,
+                AddIns.VANILLA,
+                AddIns.MILK,
+                AddIns.MOCHA,
+                AddIns.CARAMEL
+        };
+
+        addToOrderBtn.setOnClickListener(view -> {
+            Spinner spinner = findViewById(R.id.spinnerCoffee);
+            TextView quantityText = findViewById(R.id.quantityCoffee);
+            CupSize selectedSize = (CupSize) spinner.getSelectedItem();
+            int quantity = Integer.parseInt(quantityText.getText().toString().trim());
+
+            ArrayList<AddIns> selectedAddIns = new ArrayList<>();
+            for (int i = 0; i < checkGrp.length; i++) {
+                if (checkGrp[i].isChecked()) {
+                    selectedAddIns.add(addInsValues[i]);
+                }
+            }
+
+            Coffee coffee = new Coffee(quantity, selectedSize, selectedAddIns);
+            String message = "Add " + quantity + " x " + selectedSize + " to order?";
+            for (int i = 0; i < ShareResource.getInstance().getCurrentOrder().size(); i++) {
+                MenuItem item = ShareResource.getInstance().getCurrentOrder().get(i);
+                if (item.equals(coffee)) {
+                    showConfirmation(message, coffee, 0, item);
+                    //clearAll();
+                    return;
+                }
+            }
+            showConfirmation(message, coffee, 1, null);
+        });
+    }
+
+    private void showConfirmation(String message, Coffee coffee, int state, MenuItem item){
+        new AlertDialog.Builder(CoffeeActivity.this)
+                .setTitle("Confirm Order")
+                .setMessage(message)
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    if(state == 0){
+                        item.setQuantity(item.getQuantity() + coffee.getQuantity());
+                    }
+                    if(state == 1){
+                        ShareResource.getInstance().getCurrentOrder().add(coffee);
+                    }
+                    Toast.makeText(getApplicationContext(),
+                            "Added: " + coffee.getQuantity() + " x " + coffee.getSize(),
+                            Toast.LENGTH_SHORT).show();
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void displayPrice(){
+        TextView priceText = findViewById(R.id.priceText);
+        Spinner spinner = findViewById(R.id.spinnerCoffee);
+        TextView quantityText = findViewById(R.id.quantityCoffee);
+        int quantity = Integer.parseInt(quantityText.getText().toString().trim());
+
+        RadioButton[] radioGrp = {
+                findViewById(R.id.creamBtn),
+                findViewById(R.id.vanillaBtn),
+                findViewById(R.id.milkBtn),
+                findViewById(R.id.mochaBtn),
+                findViewById(R.id.caramelBtn)
+        };
+
+        AddIns[] addInsValues = {
+                AddIns.WHIPPEDCREAM,
+                AddIns.VANILLA,
+                AddIns.MILK,
+                AddIns.MOCHA,
+                AddIns.CARAMEL
+        };
+
+        ArrayList<AddIns> selectedAddIns = new ArrayList<>();
+        for (int i = 0; i < radioGrp.length; i++) {
+            if (radioGrp[i].isChecked()) {
+                selectedAddIns.add(addInsValues[i]);
+            }
+        }
+
+        MenuItem coffee = new Coffee(quantity, (CupSize) spinner.getSelectedItem(), selectedAddIns);
+        priceText.setText("$" + df.format(coffee.price()));
     }
 }
 

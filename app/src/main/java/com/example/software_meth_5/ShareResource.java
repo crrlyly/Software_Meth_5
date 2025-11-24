@@ -3,7 +3,6 @@ package com.example.software_meth_5;
 import com.example.software_meth_5.rudonuts.Order;
 import com.example.software_meth_5.rudonuts.MenuItem;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +23,6 @@ public final class ShareResource {
         currentOrder = new ArrayList<>();
     }
 
-    /**
-     * Get the only instance of GlobalData.
-     * Synchronized to prevent thread issues.
-     */
     public static synchronized ShareResource getInstance() {
         if (resource == null) {
             resource = new ShareResource();

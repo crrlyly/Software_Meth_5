@@ -53,4 +53,8 @@ public class Coffee extends MenuItem{
         String addInsString = (addIns.isEmpty()) ? "nothing" : addIns.toString();
         return size.name() + " coffee (" + quantity + ") with " + addInsString;
     }
+
+    public CupSize getSize() {
+        return size;
+    }
 }

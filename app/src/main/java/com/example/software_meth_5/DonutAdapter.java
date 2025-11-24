@@ -60,7 +60,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
             super(itemView);
             imageView = itemView.findViewById(R.id.donutImage);
             nameText = itemView.findViewById(R.id.donutName);
-            quantityText = itemView.findViewById(R.id.quantityText);
+            quantityText = itemView.findViewById(R.id.quantitySandwichText);
         }
     }
 }
