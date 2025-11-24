@@ -23,7 +23,6 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
 
     private DonutAdapter adapter;
     private Flavor[] donuts;
-
     private final DecimalFormat df = new DecimalFormat("0.00");
 
 
@@ -54,11 +53,15 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
 
     @Override
     public void onAddClick(int position) {
-        Flavor flavor = donuts[position];            // get which donut
-        int qty = adapter.getQuantity(position);    // get quantity from adapter
+        Flavor flavor = donuts[position];
+        int qty = adapter.getQuantity(position);    // get quantity from adapte
 
         if(qty == 0){
-            //toast that says to please add a quantity
+            new AlertDialog.Builder(DonutActivity.this)
+                    .setTitle("Empty Quantity")
+                    .setMessage("Item has no quantity. Please try again.")
+                    .show();
+            return;
         }
 
         Donut donutItem = new Donut(qty, flavor.getType(), flavor);
@@ -92,7 +95,6 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
                     Toast.makeText(getApplicationContext(),
                             "Added: " + donut.getQuantity() + " x " + donut.getFlavor(),
                             Toast.LENGTH_SHORT).show();
-//                    clearInputs();
                 })
                 .setNegativeButton("No", null)
                 .show();
