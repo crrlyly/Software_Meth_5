@@ -74,4 +74,8 @@ public enum Flavor {
     public static int getResID(Context context, String img) {
         return context.getResources().getIdentifier(img, "drawable", context.getPackageName());
     }
+
+    public DonutType getType() {
+        return type;
+    }
 }

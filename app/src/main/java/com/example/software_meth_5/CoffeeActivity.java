@@ -45,6 +45,8 @@ public class CoffeeActivity extends AppCompatActivity {
 
         removeFromQuantity();
 
+        checkBoxChecker();
+
         displayPrice();
     }
 
@@ -82,7 +84,7 @@ public class CoffeeActivity extends AppCompatActivity {
     }
 
     private void addToQuantity(){
-        Button addBtn = findViewById(R.id.addBtn);
+        Button addBtn = findViewById(R.id.addQuantity);
         addBtn.setOnClickListener(view -> {
             TextView quantityText = findViewById(R.id.quantityCoffee);
             int quantity = Integer.parseInt(quantityText.getText().toString().trim());
@@ -94,7 +96,7 @@ public class CoffeeActivity extends AppCompatActivity {
     }
 
     private void removeFromQuantity(){
-        Button removeBtn = findViewById(R.id.removeBtn);
+        Button removeBtn = findViewById(R.id.removeQuantity);
         removeBtn.setOnClickListener(view -> {
             TextView quantityText = findViewById(R.id.quantityCoffee);
             int quantity = Integer.parseInt(quantityText.getText().toString().trim());
@@ -108,7 +110,7 @@ public class CoffeeActivity extends AppCompatActivity {
         });
     }
 
-    //shorten this later TODO
+    //TODO Shorten
     private void addOrder() {
         Button addToOrderBtn = findViewById(R.id.addToOrderBtn);
         CheckBox[] checkGrp = {
@@ -146,7 +148,6 @@ public class CoffeeActivity extends AppCompatActivity {
                 MenuItem item = ShareResource.getInstance().getCurrentOrder().get(i);
                 if (item.equals(coffee)) {
                     showConfirmation(message, coffee, 0, item);
-                    //clearAll();
                     return;
                 }
             }
@@ -168,6 +169,7 @@ public class CoffeeActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),
                             "Added: " + coffee.getQuantity() + " x " + coffee.getSize(),
                             Toast.LENGTH_SHORT).show();
+                    clearInputs();
                 })
                 .setNegativeButton("No", null)
                 .show();
@@ -179,7 +181,7 @@ public class CoffeeActivity extends AppCompatActivity {
         TextView quantityText = findViewById(R.id.quantityCoffee);
         int quantity = Integer.parseInt(quantityText.getText().toString().trim());
 
-        CheckBox[] radioGrp = {
+        CheckBox[] checkGrp = {
                 findViewById(R.id.creamBtn),
                 findViewById(R.id.vanillaBtn),
                 findViewById(R.id.milkBtn),
@@ -196,8 +198,8 @@ public class CoffeeActivity extends AppCompatActivity {
         };
 
         ArrayList<AddIns> selectedAddIns = new ArrayList<>();
-        for (int i = 0; i < radioGrp.length; i++) {
-            if (radioGrp[i].isChecked()) {
+        for (int i = 0; i < checkGrp.length; i++) {
+            if (checkGrp[i].isChecked()) {
                 selectedAddIns.add(addInsValues[i]);
             }
         }
@@ -205,6 +207,45 @@ public class CoffeeActivity extends AppCompatActivity {
         MenuItem coffee = new Coffee(quantity, (CupSize) spinner.getSelectedItem(), selectedAddIns);
         priceText.setText("$" + df.format(coffee.price()));
     }
+
+    private void checkBoxChecker(){
+        CheckBox[] checkGrp = {
+                findViewById(R.id.creamBtn),
+                findViewById(R.id.vanillaBtn),
+                findViewById(R.id.milkBtn),
+                findViewById(R.id.mochaBtn),
+                findViewById(R.id.caramelBtn)
+        };
+
+        for (CheckBox box : checkGrp) {
+            box.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                displayPrice();
+            });
+        }
+    }
+
+    private void clearInputs(){
+        Spinner spinner = findViewById(R.id.spinnerCoffee);
+        TextView quantityText = findViewById(R.id.quantityCoffee);
+
+
+        CheckBox[] checkGrp = {
+                findViewById(R.id.creamBtn),
+                findViewById(R.id.vanillaBtn),
+                findViewById(R.id.milkBtn),
+                findViewById(R.id.mochaBtn),
+                findViewById(R.id.caramelBtn)
+        };
+
+        for (CheckBox checkBox : checkGrp) {
+            checkBox.setChecked(false);
+        }
+
+        spinner.setSelection(0);
+        quantityText.setText("1");
+        displayPrice();
+    }
+
 }
 
 

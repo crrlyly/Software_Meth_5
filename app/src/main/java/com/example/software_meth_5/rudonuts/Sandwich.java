@@ -60,4 +60,8 @@ public class Sandwich extends MenuItem{
         String addOnsString = (addOns.isEmpty()) ? "nothing" : addOns.toString();
         return protein.name() + " sandwich (" + quantity + ") on " + bread.name() + " with " + addOnsString;
     }
+
+    public Protein getProtein() {
+        return protein;
+    }
 }

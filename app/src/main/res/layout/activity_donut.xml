@@ -42,7 +42,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/donutPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="49dp"
                     android:layout_weight="1"
