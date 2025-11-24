@@ -69,11 +69,13 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
             if (item.equals(donutItem)) {
                 showConfirmation(message, donutItem, 0, item);
                 adapter.resetQuantity(position);
+                displayPrice();
                 return;
             }
         }
         showConfirmation(message, donutItem, 1, null);
         adapter.resetQuantity(position);
+        displayPrice();
     }
 
     private void showConfirmation(String message, Donut donut, int state, MenuItem item){
@@ -110,11 +112,12 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
         double price = 0;
         for (int i = 0; i < adapter.getItemCount(); i++) {
             int qty = adapter.getQuantity(i);
+            if (qty == 0) continue;
             Flavor flavor = donuts[i];
             Donut donutItem = new Donut(qty, flavor.getType(), flavor);
             price = price + donutItem.price();
         }
         TextView donutPrice = findViewById(R.id.donutPrice);
-        donutPrice.setText("$" + df.format(donutPrice));
+        donutPrice.setText("$" + df.format(price));
     }
 }

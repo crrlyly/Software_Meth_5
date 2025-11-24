@@ -41,6 +41,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
         Flavor donut = donuts[position];
 
         holder.nameText.setText(donut.getName());
+        holder.quantityText.setText(String.valueOf(quantities[position]));
 
         int resId = context.getResources().getIdentifier(
                 donut.getImg(),
@@ -97,6 +98,9 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
                 if (pos != RecyclerView.NO_POSITION) {
                     quantities[pos]++;
                     quantityText.setText(String.valueOf(quantities[pos]));
+                    if (listener != null) {
+                        listener.onIncreaseQuantity(pos);   // 🔥 CALLS ACTIVITY
+                    }
                 }
             });
 
@@ -105,6 +109,9 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
                 if (pos != RecyclerView.NO_POSITION && quantities[pos] > 0) {
                     quantities[pos]--;
                     quantityText.setText(String.valueOf(quantities[pos]));
+                    if (listener != null) {
+                        listener.onDecreaseQuantity(pos);   // 🔥 CALLS ACTIVITY
+                    }
                 }
             });
         }
