@@ -1,6 +1,7 @@
 package com.example.software_meth_5.rudonuts;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents a person's order.
@@ -9,14 +10,14 @@ import java.util.ArrayList;
  */
 public class Order {
     private int orderNumber;
-    private ArrayList<MenuItem> listOfItems;
+    private List<MenuItem> listOfItems;
 
     /**
      * Constructor for an order.
      * @param orderNumber order number
      * @param listOfItems list of menu items in order
      */
-    public Order(int orderNumber, ArrayList<MenuItem> listOfItems) {
+    public Order(int orderNumber, List<MenuItem> listOfItems) {
         this.orderNumber = orderNumber;
         this.listOfItems = new ArrayList<>();
     }
@@ -33,7 +34,7 @@ public class Order {
      * Returns a copy of the list of items
      * @return the list of items in order
      */
-    public ArrayList<MenuItem> getListOfItems() {
+    public List<MenuItem> getListOfItems() {
         return listOfItems;
     }
 
