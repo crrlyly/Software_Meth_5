@@ -23,6 +23,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="40dp"
                 android:backgroundTint="#FFFFFF"
+                android:contentDescription="@string/back_btn"
                 app:srcCompat="@drawable/back" />
 
             <LinearLayout
@@ -36,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:paddingLeft="10dp"
-                    android:text="Sandwiches"
+                    android:text="@string/sandwich_title"
                     android:textSize="34sp"
                     android:textStyle="bold" />
 
@@ -47,7 +48,7 @@
                     android:layout_weight="1"
                     android:gravity="right|center_vertical"
                     android:paddingRight="50dp"
-                    android:text="$0.00"
+                    android:text="@string/base_price"
                     android:textSize="34sp" />
             </LinearLayout>
 
@@ -56,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:text="Please choose your sandwich selection."
+                android:text="@string/sandwich_instruction"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:paddingLeft="10dp"
-                android:text="Choose Your Choice of Protein "
+                android:text="@string/protein_instruction"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -103,7 +104,7 @@
                 android:paddingTop="20dp"
                 android:paddingRight="50dp"
                 android:paddingBottom="10dp"
-                android:text="Choose Some Add-Ons"
+                android:text="@string/addon_instruction"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -126,7 +127,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginBottom="5dp"
                         android:paddingLeft="5dp"
-                        android:text="Choose Your Bread"
+                        android:text="@string/bread_instruction"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -153,7 +154,7 @@
                             android:layout_marginRight="5dp"
                             android:gravity="center"
                             android:padding="2dp"
-                            android:text="+"
+                            android:text="@string/add"
                             android:textSize="20sp" />
 
                         <TextView
@@ -164,7 +165,7 @@
                             android:layout_marginRight="5dp"
                             android:layout_weight="0"
                             android:gravity="center"
-                            android:text="1"
+                            android:text="@string/exist"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -174,7 +175,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="center"
-                            android:text="-"
+                            android:text="@string/remove"
                             android:textColor="#FFFFFF"
                             android:textColorLink="#FFFFFF"
                             android:textSize="20sp"
@@ -187,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
-                        android:text="Add to Order" />
+                        android:text="@string/add_btn" />
                 </LinearLayout>
 
                 <RadioGroup
@@ -198,25 +199,25 @@
                         android:id="@+id/tomatoBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tomato" />
+                        android:text="@string/tomato" />
 
                     <CheckBox
                         android:id="@+id/lettuceBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lettuce" />
+                        android:text="@string/lettuce" />
 
                     <CheckBox
                         android:id="@+id/cheeseBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cheese" />
+                        android:text="@string/cheese" />
 
                     <CheckBox
                         android:id="@+id/onionBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Onion" />
+                        android:text="@string/onion" />
 
                 </RadioGroup>
             </LinearLayout>

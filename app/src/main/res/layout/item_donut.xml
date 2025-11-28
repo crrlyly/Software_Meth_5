@@ -20,6 +20,7 @@
             android:id="@+id/donutImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:contentDescription="@string/donut_pic"
             android:scaleType="centerCrop" />
 
         <TextView
@@ -30,7 +31,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center|center_vertical"
-            android:text="Donut"
+            android:text="@string/donut_title"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -47,7 +48,7 @@
                 android:background="#644D4E"
                 android:foregroundGravity="center_vertical"
                 android:gravity="center|center_vertical"
-                android:text="Add to Order" />
+                android:text="@string/add_btn" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,7 +64,7 @@
                     android:layout_marginRight="5dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="+"
+                    android:text="@string/add"
                     android:textSize="20sp" />
 
                 <TextView
@@ -74,7 +75,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_weight="0"
                     android:gravity="center"
-                    android:text="0"
+                    android:text="@string/none"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -84,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:text="-"
+                    android:text="@string/remove"
                     android:textColor="#FFFFFF"
                     android:textColorLink="#FFFFFF"
                     android:textSize="20sp"

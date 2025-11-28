@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <FrameLayout
@@ -24,7 +24,7 @@
                 android:id="@+id/cafePic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="cafe"
+                android:contentDescription="@string/content"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/cutecafe" />
 
@@ -41,9 +41,9 @@
                 android:layout_width="355dp"
                 android:layout_height="172dp"
                 android:layout_gravity="bottom"
-                android:contentDescription="cafe"
+                android:contentDescription="@string/content"
                 android:paddingLeft="30dp"
-                android:text="Introducing RU Cafe"
+                android:text="@string/cafe_title"
                 android:textColor="#FFFFFF"
                 android:textSize="55sp"
                 android:textStyle="normal" />
@@ -63,7 +63,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="10dp"
-                android:text="See Our Menu!"
+                android:text="@string/menu_direction"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -79,7 +79,7 @@
                     android:layout_width="357dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:contentDescription="donut button"
+                    android:contentDescription="@string/donut_btn"
                     app:srcCompat="@drawable/mapleyeast" />
 
                 <TextView
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Donuts"
+                    android:text="@string/donut_title"
                     android:textColor="#000000"
                     android:textSize="48sp"
                     android:textStyle="bold" />
@@ -104,7 +104,7 @@
                     android:layout_width="357dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:contentDescription="coffee button"
+                    android:contentDescription="@string/coffee_btn"
                     app:srcCompat="@drawable/coffeepic" />
 
                 <TextView
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Coffee"
+                    android:text="@string/coffee_title"
                     android:textColor="#000000"
                     android:textSize="48sp"
                     android:textStyle="bold" />
@@ -129,7 +129,7 @@
                     android:layout_width="357dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:contentDescription="sandwich button"
+                    android:contentDescription="@string/sandwich_btn"
                     app:srcCompat="@drawable/sandwichpic" />
 
                 <TextView
@@ -137,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Sandwich"
+                    android:text="@string/sandwich_title"
                     android:textColor="#000000"
                     android:textSize="48sp"
                     android:textStyle="bold" />
@@ -169,7 +169,7 @@
                     android:layout_height="120dp"
                     android:layout_marginRight="20dp"
                     android:background="#FFFFFF"
-                    android:contentDescription="Menu"
+                    android:contentDescription="@string/content_menu"
                     android:padding="20dp"
                     app:srcCompat="@drawable/menu" />
 
@@ -177,7 +177,7 @@
                     android:id="@+id/bagIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="Bag"
+                    android:contentDescription="@string/content_bag"
                     android:padding="20dp"
                     app:srcCompat="@drawable/cart" />
 
@@ -186,7 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:contentDescription="Orders"
+                    android:contentDescription="@string/content_order"
                     android:padding="20dp"
                     app:srcCompat="@drawable/order" />
             </LinearLayout>
