@@ -10,7 +10,7 @@ import java.util.List;
  * Singleton class to store global data such as currentOrder and allOrders.
  * Works across all Activities & Fragments in Android.
  *
- * @author Carly
+ * @author Carly Chick
  */
 public final class ShareResource {
     private static ShareResource resource;
@@ -30,8 +30,6 @@ public final class ShareResource {
         return resource;
     }
 
-    // ---------------- GETTERS ----------------
-
     public List<Order> getAllOrders() {
         return allOrders;
     }
@@ -44,18 +42,7 @@ public final class ShareResource {
         return orderNumber;
     }
 
-    // ---------------- SETTERS ----------------
-
     public void setOrderNumber(int number) {
         this.orderNumber = number;
-    }
-
-    // Optional: Clear orders when user checks out
-    public void clearCurrentOrder() {
-        currentOrder.clear();
-    }
-
-    public void clearAllOrders() {
-        allOrders.clear();
     }
 }
