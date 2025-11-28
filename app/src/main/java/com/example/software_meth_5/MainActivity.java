@@ -14,9 +14,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
+/**
+ * Activity class for the main page.
+ *
+ * @author Carly Chick
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Initialization function.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SandwichActivity.class);
             startActivity(intent);
         });
-
         botNavListener();
     }
 
+    /**
+     * Allows user to switch pages using bottom nav.
+     */
     private void botNavListener(){
         ImageView bagIcon = findViewById(R.id.bagIcon);
         ImageView orderIcon = findViewById(R.id.orderIcon);
@@ -51,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, BagActivity.class);
             startActivity(intent);
         });
-
         orderIcon.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, OrderActivity.class);
             startActivity(intent);

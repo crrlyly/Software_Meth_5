@@ -3,7 +3,7 @@ package com.example.software_meth_5.rudonuts;
 /**
  * This enum class stores the donut types for a donut.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public enum DonutType {
     YEAST(1.99),

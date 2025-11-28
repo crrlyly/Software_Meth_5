@@ -1,15 +1,9 @@
 package com.example.software_meth_5.rudonuts;
 
-import android.content.Context;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * This enum class stores the flavors for a donut.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public enum Flavor {
     GLAZED(DonutType.YEAST, "Glazed Yeast Donut", "glazedyeast"),
@@ -31,7 +25,6 @@ public enum Flavor {
     SPOOKY(DonutType.SEASONAL, "Spooky Donut", "spooky");
 
     private final DonutType type;
-
     private final String name;
     private final String img;
 
@@ -46,35 +39,25 @@ public enum Flavor {
     }
 
     /**
-     * Returns a list of the flavors by donut type that was selected
-     * @param type donut type selected
-     * @return list of flavors of the donut type
+     * Gets the name of the donut
+     * @return donut name
      */
-    public static List<Flavor> byType(DonutType type) {
-        return Arrays.stream(values())
-                .filter(f -> f.type == type)
-                .collect(Collectors.toList());
-    }
-
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the donut image
+     * @return donut image
+     */
     public String getImg() {
         return img;
     }
 
     /**
-     * Method that returns the res id of the image.
-     *
-     * @param context current activity
-     * @param img the image
-     * @return the res id
+     * Gets the donut type
+     * @return donut type
      */
-    public static int getResID(Context context, String img) {
-        return context.getResources().getIdentifier(img, "drawable", context.getPackageName());
-    }
-
     public DonutType getType() {
         return type;
     }

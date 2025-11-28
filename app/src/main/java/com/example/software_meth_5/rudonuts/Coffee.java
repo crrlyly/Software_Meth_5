@@ -54,6 +54,10 @@ public class Coffee extends MenuItem{
         return size.name() + " coffee (" + quantity + ") with " + addInsString;
     }
 
+    /**
+     * Gets the size of the cup
+     * @return cupsize
+     */
     public CupSize getSize() {
         return size;
     }

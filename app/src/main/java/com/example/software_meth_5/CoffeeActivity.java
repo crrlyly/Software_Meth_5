@@ -1,6 +1,5 @@
 package com.example.software_meth_5;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,31 +24,39 @@ import com.example.software_meth_5.rudonuts.MenuItem;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Activity class for the coffee page.
+ *
+ * @author Carly Chick
+ */
 public class CoffeeActivity extends AppCompatActivity {
 
     private final DecimalFormat df = new DecimalFormat("0.00");
 
+    /**
+     * Initialization function.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_coffee);
-
         backBtnHandler();
-
         initSpinner();
-
         addOrder();
-
         addToQuantity();
-
         removeFromQuantity();
-
         checkBoxChecker();
-
         displayPrice();
     }
 
+    /**
+     * Handler for the back button.
+     */
     private void backBtnHandler(){
         ImageButton backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> {
@@ -58,6 +65,9 @@ public class CoffeeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Initializes the cup size spinner.
+     */
     private void initSpinner(){
         Spinner spinner = findViewById(R.id.spinnerCoffee);
 
@@ -83,6 +93,10 @@ public class CoffeeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Adds to quantity for coffee.
+     *
+     */
     private void addToQuantity(){
         Button addBtn = findViewById(R.id.addQuantity);
         addBtn.setOnClickListener(view -> {
@@ -90,11 +104,14 @@ public class CoffeeActivity extends AppCompatActivity {
             int quantity = Integer.parseInt(quantityText.getText().toString().trim());
             int newQuantity = quantity + 1;
             quantityText.setText(String.valueOf(newQuantity));
-
             displayPrice();
         });
     }
 
+    /**
+     * Decreases quantity for coffee.
+     *
+     */
     private void removeFromQuantity(){
         Button removeBtn = findViewById(R.id.removeQuantity);
         removeBtn.setOnClickListener(view -> {
@@ -105,12 +122,14 @@ public class CoffeeActivity extends AppCompatActivity {
             }
             int newQuantity = quantity - 1;
             quantityText.setText(String.valueOf(newQuantity));
-
             displayPrice();
         });
     }
 
-    //TODO Shorten
+
+    /**
+     * Adds coffee item to order.
+     */
     private void addOrder() {
         Button addToOrderBtn = findViewById(R.id.addToOrderBtn);
         CheckBox[] checkGrp = {
@@ -120,7 +139,6 @@ public class CoffeeActivity extends AppCompatActivity {
                 findViewById(R.id.mochaBtn),
                 findViewById(R.id.caramelBtn)
         };
-
         AddIns[] addInsValues = {
                 AddIns.WHIPPEDCREAM,
                 AddIns.VANILLA,
@@ -128,20 +146,17 @@ public class CoffeeActivity extends AppCompatActivity {
                 AddIns.MOCHA,
                 AddIns.CARAMEL
         };
-
         addToOrderBtn.setOnClickListener(view -> {
             Spinner spinner = findViewById(R.id.spinnerCoffee);
             TextView quantityText = findViewById(R.id.quantityCoffee);
             CupSize selectedSize = (CupSize) spinner.getSelectedItem();
             int quantity = Integer.parseInt(quantityText.getText().toString().trim());
-
             ArrayList<AddIns> selectedAddIns = new ArrayList<>();
             for (int i = 0; i < checkGrp.length; i++) {
                 if (checkGrp[i].isChecked()) {
                     selectedAddIns.add(addInsValues[i]);
                 }
             }
-
             Coffee coffee = new Coffee(quantity, selectedSize, selectedAddIns);
             String message = "Add " + quantity + " x " + selectedSize + " to order?";
             for (int i = 0; i < ShareResource.getInstance().getCurrentOrder().size(); i++) {
@@ -155,6 +170,13 @@ public class CoffeeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Shows confirmation before adding coffee.
+     * @param message confirmation message
+     * @param coffee coffee to be added
+     * @param state tells if need to add to quantity of existing item or make a new item in list
+     * @param item the menu item to add to depending on state
+     */
     private void showConfirmation(String message, Coffee coffee, int state, MenuItem item){
         new AlertDialog.Builder(CoffeeActivity.this)
                 .setTitle("Confirm Order")
@@ -175,6 +197,9 @@ public class CoffeeActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Displays price
+     */
     private void displayPrice(){
         TextView priceText = findViewById(R.id.priceText);
         Spinner spinner = findViewById(R.id.spinnerCoffee);
@@ -208,6 +233,9 @@ public class CoffeeActivity extends AppCompatActivity {
         priceText.setText("$" + df.format(coffee.price()));
     }
 
+    /**
+     * Checks what items are selected in the addins checkboxes.
+     */
     private void checkBoxChecker(){
         CheckBox[] checkGrp = {
                 findViewById(R.id.creamBtn),
@@ -224,10 +252,12 @@ public class CoffeeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Reset coffee page to default.
+     */
     private void clearInputs(){
         Spinner spinner = findViewById(R.id.spinnerCoffee);
         TextView quantityText = findViewById(R.id.quantityCoffee);
-
 
         CheckBox[] checkGrp = {
                 findViewById(R.id.creamBtn),
@@ -240,12 +270,10 @@ public class CoffeeActivity extends AppCompatActivity {
         for (CheckBox checkBox : checkGrp) {
             checkBox.setChecked(false);
         }
-
         spinner.setSelection(0);
         quantityText.setText("1");
         displayPrice();
     }
-
 }
 
 

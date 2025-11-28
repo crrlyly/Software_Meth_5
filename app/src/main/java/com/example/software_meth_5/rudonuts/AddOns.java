@@ -3,7 +3,7 @@ package com.example.software_meth_5.rudonuts;
 /**
  * This enum class stores the add-ons for a sandwich.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public enum AddOns {
     LETTUCE(0.30),

@@ -30,12 +30,6 @@ public class Donut extends MenuItem{
     };
 
     /**
-     * Returns donut type
-     * @return donut type
-     */
-    public DonutType getType() { return type; }
-
-    /**
      * Returns donut flavor
      * @return donut flavor
      */

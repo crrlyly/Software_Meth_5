@@ -3,7 +3,7 @@ package com.example.software_meth_5.rudonuts;
 /**
  * This enum class stores the protein for a sandwich.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public enum Protein {
     BEEF(12.99),
@@ -28,19 +28,4 @@ public enum Protein {
         return price;
     }
 
-    /**
-     * Parses a string into its corresponding Protein value (case-insensitive).
-     *
-     * @param proteinStr the protein string to parse
-     * @return the matching Protein constant if found; null if no match exists
-     */
-    public static Protein parseProtein(String proteinStr) {
-        Protein[] allProteins = Protein.values();
-        for (int i = 0; i < allProteins.length; i++) {
-            if (allProteins[i].name().equalsIgnoreCase(proteinStr)) {
-                return allProteins[i];
-            }
-        }
-        return null;
-    }
 }

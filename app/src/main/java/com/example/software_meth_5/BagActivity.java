@@ -2,7 +2,6 @@ package com.example.software_meth_5;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -13,25 +12,32 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.software_meth_5.rudonuts.Donut;
-import com.example.software_meth_5.rudonuts.Flavor;
 import com.example.software_meth_5.rudonuts.MenuItem;
 import com.example.software_meth_5.rudonuts.Order;
-
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Activity class for the bag page.
+ *
+ * @author Carly Chick
+ */
 public class BagActivity extends AppCompatActivity {
 
-    private int selectedPosition = -1; // stored position
     private CustomAdapter adapter;
     private List<MenuItem> itemList;
     private final DecimalFormat df = new DecimalFormat("0.00");
+    private int SELECTED_POSITION = -1;
 
+    /**
+     * Initialization function.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +59,7 @@ public class BagActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            selectedPosition = position;
+            SELECTED_POSITION = position;
             adapter.setSelectedPosition(position);
             adapter.notifyDataSetChanged();
         });
@@ -65,6 +71,9 @@ public class BagActivity extends AppCompatActivity {
         displayPrice();
     }
 
+    /**
+     * Allows user to switch pages using bottom nav.
+     */
     private void botNavListener(){
         ImageView menuIcon = findViewById(R.id.menuIcon);
         ImageView orderIcon = findViewById(R.id.orderIcon);
@@ -80,6 +89,9 @@ public class BagActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Displays the price.
+     */
     private void displayPrice(){
         TextView sales = findViewById(R.id.subTotalText);
         TextView tax = findViewById(R.id.taxText);
@@ -96,11 +108,14 @@ public class BagActivity extends AppCompatActivity {
         total.setText("$" + df.format(totalAmount));
     }
 
+    /**
+     * Deletes the selected item in the current order.
+     */
     private void deleteSelectedItem() {
-        if (selectedPosition != -1) {
-            itemList.remove(selectedPosition);
+        if (SELECTED_POSITION != -1) {
+            itemList.remove(SELECTED_POSITION);
             adapter.notifyDataSetChanged();
-            selectedPosition = -1;
+            SELECTED_POSITION = -1;
             new AlertDialog.Builder(BagActivity.this)
                     .setTitle("Item Status")
                     .setMessage("Item has been successfully deleted.")
@@ -114,11 +129,14 @@ public class BagActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Places the current order.
+     */
     private void placeOrder() {
         if (itemList.isEmpty()) {
             new AlertDialog.Builder(BagActivity.this)
                     .setTitle("List Status")
-                    .setMessage("No selected items in bag. Please add some items and try again.")
+                    .setMessage("No items in bag. Please add some items and try again.")
                     .show();
             return;
         }
@@ -129,7 +147,7 @@ public class BagActivity extends AppCompatActivity {
 
         Order order = new Order(
                 ShareResource.getInstance().getOrderNumber(),
-                new ArrayList<>(ShareResource.getInstance().getCurrentOrder())    // COPY!
+                new ArrayList<>(ShareResource.getInstance().getCurrentOrder())
         );
 
         ShareResource.getInstance().getAllOrders().add(order);

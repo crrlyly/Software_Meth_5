@@ -1,6 +1,5 @@
 package com.example.software_meth_5;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,12 +25,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Activity class for the order page.
+ *
+ * @author Carly Chick
+ */
 public class OrderActivity extends AppCompatActivity {
-    private int selectedOrderIndex = -1;  // field at top of Activity
+
     private ArrayAdapter<MenuItem> adapter;
     private List<MenuItem> orderList;
     private final DecimalFormat df = new DecimalFormat("0.00");
+    private int SELECTED_ORDER_INDEX = -1;
 
+    /**
+     * Initialization function.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +70,9 @@ public class OrderActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(v -> deleteOrder());
     }
 
+    /**
+     * Allows user to switch pages using bottom nav.
+     */
     private void botNavListener(){
         ImageView menuIcon = findViewById(R.id.menuIcon);
         ImageView bagIcon = findViewById(R.id.bagIcon);
@@ -74,6 +89,9 @@ public class OrderActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Initializes spinner for items.
+     */
     private void initSpinner(){
         Spinner spinner = findViewById(R.id.orderNumSpinner);
         ArrayList<Integer> orderNumbers = new ArrayList<>();
@@ -81,41 +99,40 @@ public class OrderActivity extends AppCompatActivity {
         for(int i = 0; i < ShareResource.getInstance().getAllOrders().size(); i++){
             orderNumbers.add(ShareResource.getInstance().getAllOrders().get(i).getOrderNumber());
         }
-
         ArrayAdapter<Integer> spinnerAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
                 orderNumbers
         );
-
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedOrderIndex = position;
+                SELECTED_ORDER_INDEX = position;
                 orderList.clear();
                 orderList.addAll(
                         ShareResource.getInstance()
                                 .getAllOrders()
-                                .get(selectedOrderIndex)
+                                .get(SELECTED_ORDER_INDEX)
                                 .getListOfItems()
                 );
                 adapter.notifyDataSetChanged();
                 displayPrice();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
+    /**
+     * Displays the price.
+     */
     private void displayPrice(){
         TextView price = findViewById(R.id.orderPrice);
         double subTotal = 0;
         for(MenuItem item: ShareResource.getInstance()
-                .getAllOrders().get(selectedOrderIndex).getListOfItems()){
+                .getAllOrders().get(SELECTED_ORDER_INDEX).getListOfItems()){
             subTotal = subTotal + item.price();
         }
         double salesTax = subTotal * 0.06625;
@@ -123,6 +140,9 @@ public class OrderActivity extends AppCompatActivity {
         price.setText("$" + df.format(total));
     }
 
+    /**
+     * Deletes the order.
+     */
     private void deleteOrder(){
         Spinner spinner = findViewById(R.id.orderNumSpinner);
         Integer selected = (Integer) spinner.getSelectedItem();
@@ -131,9 +151,7 @@ public class OrderActivity extends AppCompatActivity {
             Toast.makeText(this, "Please select an order first.", Toast.LENGTH_SHORT).show();
             return;
         }
-
         List<Order> allOrders = ShareResource.getInstance().getAllOrders();
-
         Iterator<Order> iterator = allOrders.iterator();
         while (iterator.hasNext()) {
             Order o = iterator.next();
@@ -142,23 +160,22 @@ public class OrderActivity extends AppCompatActivity {
                 break;
             }
         }
-
         orderList.clear();
         adapter.notifyDataSetChanged();
-
         spinner.setSelection(-1);
-
         new AlertDialog.Builder(this)
                 .setTitle("Order Deleted")
                 .setMessage("Order #" + selected + " was removed successfully.")
                 .setPositiveButton("OK", null)
                 .show();
-
         TextView price = findViewById(R.id.orderPrice);
         price.setText("$0.00");
         refreshSpinner();
     }
 
+    /**
+     * Refreshes spinner after deleted order.
+     */
     private void refreshSpinner() {
         Spinner spinner = findViewById(R.id.orderNumSpinner);
 
@@ -166,7 +183,6 @@ public class OrderActivity extends AppCompatActivity {
         for (Order o : ShareResource.getInstance().getAllOrders()) {
             orderNumbers.add(o.getOrderNumber());
         }
-
         ArrayAdapter<Integer> spinnerAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,

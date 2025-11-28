@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * This class represents a sandwich menu item.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public class Sandwich extends MenuItem{
     protected Bread bread;
@@ -61,6 +61,10 @@ public class Sandwich extends MenuItem{
         return protein.name() + " sandwich (" + quantity + ") on " + bread.name() + " with " + addOnsString;
     }
 
+    /**
+     * Gets the protein
+     * @return protein
+     */
     public Protein getProtein() {
         return protein;
     }

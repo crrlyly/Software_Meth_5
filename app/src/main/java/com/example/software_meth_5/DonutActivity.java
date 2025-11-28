@@ -19,19 +19,29 @@ import com.example.software_meth_5.rudonuts.MenuItem;
 
 import java.text.DecimalFormat;
 
+/**
+ * Activity class for the donut page.
+ *
+ * @author Carly Chick
+ */
 public class DonutActivity extends AppCompatActivity implements OnDonutClickListener{
 
     private DonutAdapter adapter;
     private Flavor[] donuts;
     private final DecimalFormat df = new DecimalFormat("0.00");
 
-
+    /**
+     * Initialization function.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_donut);
-
         backBtnHandler();
 
         donuts = Flavor.values();
@@ -43,6 +53,9 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * Handler for the back button.
+     */
     private void backBtnHandler(){
         ImageButton backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> {
@@ -51,10 +64,14 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
         });
     }
 
+    /**
+     * Adds donut to order.
+     * @param position donut position in recycler
+     */
     @Override
     public void onAddClick(int position) {
         Flavor flavor = donuts[position];
-        int qty = adapter.getQuantity(position);    // get quantity from adapte
+        int qty = adapter.getQuantity(position);
 
         if(qty == 0){
             new AlertDialog.Builder(DonutActivity.this)
@@ -81,6 +98,13 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
         displayPrice();
     }
 
+    /**
+     * Shows confirmation before adding donut.
+     * @param message confirmation message
+     * @param donut donut to be added
+     * @param state tells if need to add to quantity of existing item or make a new item in list
+     * @param item the menu item to add to depending on state
+     */
     private void showConfirmation(String message, Donut donut, int state, MenuItem item){
         new AlertDialog.Builder(DonutActivity.this)
                 .setTitle("Confirm Order")
@@ -100,16 +124,27 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
                 .show();
     }
 
+    /**
+     * Increases quantity of donut.
+     * @param position donut position in recycler
+     */
     @Override
     public void onIncreaseQuantity(int position) {
         displayPrice();
     }
 
+    /**
+     * Decreases quantity of donut.
+     * @param position donut position in recycler
+     */
     @Override
     public void onDecreaseQuantity(int position) {
         displayPrice();
     }
 
+    /**
+     * Displays price.
+     */
     private void displayPrice(){
         double price = 0;
         for (int i = 0; i < adapter.getItemCount(); i++) {
