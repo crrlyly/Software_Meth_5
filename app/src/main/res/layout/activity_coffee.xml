@@ -92,6 +92,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerCrop"
+                android:contentDescription="@string/coffee_pic"
                 app:srcCompat="@drawable/coffeepic" />
 
             <TextView

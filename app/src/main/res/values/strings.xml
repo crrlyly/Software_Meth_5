@@ -38,6 +38,7 @@
     <string name="cheese">Cheese</string>
     <string name="onion">Onion</string>
     <string name="bread_instruction">Choose Your Bread</string>
+    <string name="sand_pic">a picture of the sandwich</string>
 
 <!--    Bag Page-->
     <string name="bag_title">Your Bag</string>
