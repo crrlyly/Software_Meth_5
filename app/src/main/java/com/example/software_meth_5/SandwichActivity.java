@@ -27,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Activity class for the sandwich page.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public class SandwichActivity extends AppCompatActivity {
 

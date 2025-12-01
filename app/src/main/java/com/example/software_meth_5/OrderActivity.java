@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Activity class for the order page.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public class OrderActivity extends AppCompatActivity {
 

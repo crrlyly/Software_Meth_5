@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Activity class for the bag page.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public class BagActivity extends AppCompatActivity {
 

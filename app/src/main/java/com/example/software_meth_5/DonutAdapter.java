@@ -16,7 +16,7 @@ import com.example.software_meth_5.rudonuts.Flavor;
 /**
  * Adapter class for the donut recycler.
  *
- * @author Carly Chick
+ * @author Alec Cotler
  */
 public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHolder> {
 
