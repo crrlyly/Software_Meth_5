@@ -71,4 +71,6 @@
     <string name="content_bag">bag</string>
     <string name="content_order">order</string>
 
+<!--    coded-->
+    <string name="money">$%1$s</string>
 </resources>

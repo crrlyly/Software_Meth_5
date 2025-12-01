@@ -241,7 +241,7 @@ public class SandwichActivity extends AppCompatActivity {
             }
         }
         MenuItem sandwich = new Sandwich(quantity, (Bread) spinnerBread.getSelectedItem(), (Protein) spinnerMeat.getSelectedItem(), selectedAddOns);
-        priceText.setText("$" + df.format(sandwich.price()));
+        priceText.setText(getString(R.string.money, df.format(sandwich.price())));
     }
 
     /**
@@ -255,9 +255,7 @@ public class SandwichActivity extends AppCompatActivity {
                 findViewById(R.id.onionBtn),
         };
         for (CheckBox box : checkGrp) {
-            box.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                displayPrice();
-            });
+            box.setOnCheckedChangeListener((buttonView, isChecked) -> displayPrice());
         }
     }
 

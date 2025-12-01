@@ -103,9 +103,9 @@ public class BagActivity extends AppCompatActivity {
         }
         double salesTax = subTotal * 0.06625;
         double totalAmount = salesTax + subTotal;
-        sales.setText("$" + df.format(subTotal));
-        tax.setText("$" + df.format(salesTax));
-        total.setText("$" + df.format(totalAmount));
+        sales.setText(getString(R.string.money, df.format(subTotal)));
+        tax.setText(getString(R.string.money, df.format(salesTax)));
+        total.setText(getString(R.string.money, df.format(totalAmount)));
     }
 
     /**

@@ -155,6 +155,6 @@ public class DonutActivity extends AppCompatActivity implements OnDonutClickList
             price = price + donutItem.price();
         }
         TextView donutPrice = findViewById(R.id.donutPrice);
-        donutPrice.setText("$" + df.format(price));
+        donutPrice.setText(getString(R.string.money, df.format(price)));
     }
 }

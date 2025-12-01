@@ -147,7 +147,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
                     quantities[pos]++;
                     quantityText.setText(String.valueOf(quantities[pos]));
                     if (listener != null) {
-                        listener.onIncreaseQuantity(pos);   // 🔥 CALLS ACTIVITY
+                        listener.onIncreaseQuantity(pos);
                     }
                 }
             });
@@ -158,7 +158,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutViewHol
                     quantities[pos]--;
                     quantityText.setText(String.valueOf(quantities[pos]));
                     if (listener != null) {
-                        listener.onDecreaseQuantity(pos);   // 🔥 CALLS ACTIVITY
+                        listener.onDecreaseQuantity(pos);
                     }
                 }
             });

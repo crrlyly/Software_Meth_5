@@ -230,7 +230,7 @@ public class CoffeeActivity extends AppCompatActivity {
         }
 
         MenuItem coffee = new Coffee(quantity, (CupSize) spinner.getSelectedItem(), selectedAddIns);
-        priceText.setText("$" + df.format(coffee.price()));
+        priceText.setText(getString(R.string.money, df.format(coffee.price())));
     }
 
     /**
@@ -246,9 +246,7 @@ public class CoffeeActivity extends AppCompatActivity {
         };
 
         for (CheckBox box : checkGrp) {
-            box.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                displayPrice();
-            });
+            box.setOnCheckedChangeListener((buttonView, isChecked) -> displayPrice());
         }
     }
 

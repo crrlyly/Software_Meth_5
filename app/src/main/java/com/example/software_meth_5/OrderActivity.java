@@ -137,7 +137,7 @@ public class OrderActivity extends AppCompatActivity {
         }
         double salesTax = subTotal * 0.06625;
         double total = salesTax + subTotal;
-        price.setText("$" + df.format(total));
+        price.setText(getString(R.string.money, df.format(total)));
     }
 
     /**
@@ -169,7 +169,7 @@ public class OrderActivity extends AppCompatActivity {
                 .setPositiveButton("OK", null)
                 .show();
         TextView price = findViewById(R.id.orderPrice);
-        price.setText("$0.00");
+        price.setText(getString(R.string.base_price));
         refreshSpinner();
     }
 
